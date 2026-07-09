@@ -7,6 +7,12 @@ import RefreshToken from "../../model/refreshToken.model.js";
 export const register = async (payload) => {
     const { name, email, password, phone, role } = payload;
 
+    const existUser = await User.findOne({ email });
+
+    if (existUser) {
+        throw new Error("User already exists");
+    }
+
     const user = await User.create({
         name,
         email,
