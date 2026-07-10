@@ -1,7 +1,7 @@
 // src/controllers/user.controller.js
 
-import * as userService from "../../services/user/user.services.js";
-import HTTP_STATUS from "../../utils/httpStatus.js";
+import * as userService from "../services/user.service.js";
+import HTTP_STATUS from "../utils/httpStatus.js";
 
 export const getAllUsers = async (req, res, next) => {
     try {

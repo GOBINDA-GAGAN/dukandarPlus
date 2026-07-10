@@ -1,9 +1,9 @@
-import * as authService from "../../services/auth/auth.service.js";
-import HTTP_STATUS from "../../utils/httpStatus.js";
+import * as authService from "../services/auth.service.js";
+import HTTP_STATUS from "../utils/httpStatus.js";
 
 export const register = async (req, res, next) => {
     try {
-        const result = await authService.register(req.body);
+        const result = await authService.register(req.user,req.body);
 
         return res.status(HTTP_STATUS.CREATED).json({
             success: true,

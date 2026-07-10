@@ -1,7 +1,7 @@
-import User from "../../model/user.model.js";
-import Shop from "../../model/shop.modal.js";
-import { generateAccessToken, generateRefreshToken } from "../../utils/jwt.js";
-import RefreshToken from "../../model/refreshToken.model.js";
+import User from "../model/user.model.js";
+import Shop from "../model/shop.modal.js";
+import { generateAccessToken, generateRefreshToken } from "../utils/jwt.js";
+import RefreshToken from "../model/refreshToken.model.js";
 
 
 export const register = async (payload) => {
@@ -74,9 +74,7 @@ export const login = async (body) => {
 };
 
 export const getMe = async (user) => {
-    console.log(user);
 
-    console.log(user.userId);
 
     const findUser = await User.findById(user.userId).select("-password");
 
@@ -114,7 +112,7 @@ export const resetPassword = async (payload) => {
     throw new Error("resetPassword() not implemented");
 };
 
-;
+
 
 
 export const changePassword = async (user, payload) => {
