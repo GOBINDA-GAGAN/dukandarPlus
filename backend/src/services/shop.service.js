@@ -28,3 +28,42 @@ export const getAllShop = async () => {
     return allShopList;
 
 }
+
+export const getshopById = async (shopId) => {
+
+    const existShop = await Shop.findById(shopId);
+
+    if (!existShop) {
+        throw new Error("Shop not found");
+    }
+    return existShop;
+
+
+
+}
+
+
+export const updateShopById = async (shopId, payload) => {
+
+    const updateShop = await Shop.findByIdAndUpdate(shopId, payload, {new: true, runValidators: true});
+
+    if (!updateShop) {
+        throw new Error("Shop not found");
+    }
+    return updateShop;
+
+
+
+}
+export const  deleteShopById = async (shopId) => {
+
+    const updateShop = await Shop.findByIdAndDelete(shopId);
+
+    if (!updateShop) {
+        throw new Error("Shop not found");
+    }
+    return updateShop;
+
+
+
+}

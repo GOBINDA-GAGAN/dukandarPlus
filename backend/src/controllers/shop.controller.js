@@ -30,4 +30,49 @@ export const getAllShop = async (req, res, next) => {
     }
 };
 
+export const getshopById = async (req, res, next) => {
+    try {
+        const { shopId } = req.params;
+        console.log(shopId);
+
+
+        const shop = await shopService.getshopById(shopId);
+        res.status(HTTP_STATUS.OK).json({
+            success: true,
+            message: "Shops",
+            data: shop,
+        });
+    } catch (error) {
+        next(error);
+    }
+};
+
+export const updateShopById = async (req, res, next) => {
+    try {
+        const { shopId } = req.params;
+
+        const updateShop = await shopService.updateShopById(shopId,req.body);
+        res.status(HTTP_STATUS.OK).json({
+            success: true,
+            message: "Shop updated successfully",
+            data: updateShop,
+        });
+    } catch (error) {
+        next(error);
+    }
+}
+export const deleteShopById = async (req, res, next) => {
+    try {
+        const { shopId } = req.params;
+
+        const updateShop = await shopService.deleteShopById(shopId,req.body);
+        res.status(HTTP_STATUS.OK).json({
+            success: true,
+            message: "Shop delete successfully",
+            data: updateShop,
+        });
+    } catch (error) {
+        next(error);
+    }
+}
 

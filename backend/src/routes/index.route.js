@@ -2,8 +2,7 @@ import { Router } from "express";
 
 import authRoutes from "./auth.route.js";
 import userRoutes from "./user.route.js";
-import roleMiddleware from "../middleware/role.middleware.js";
-import { authenticate } from "../middleware/auth.middleware.js";
+
 import shopRoutes from "./shop.route.js";
 // import productRoutes from "./product.routes.js";
 // import categoryRoutes from "./category.routes.js";
@@ -15,9 +14,9 @@ import shopRoutes from "./shop.route.js";
 const router = Router();
 
 router.use("/auth", authRoutes);
-router.use("/admin", authenticate, roleMiddleware("SUPER_ADMIN", "SHOP_OWNER"), userRoutes);
+router.use("/admin" , userRoutes);
 // router.use("/admin", userRoutes);
-router.use("/shops", authenticate, roleMiddleware("SUPER_ADMIN", "SHOP_OWNER"), shopRoutes);
+router.use("/shops", shopRoutes);
 
 // router.use("/products", productRoutes);
 // router.use("/categories", categoryRoutes);
